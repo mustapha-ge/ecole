@@ -25,3 +25,5 @@ Route::get('/contact', function () {
 
 
 Route::post('/contact', [ContactController::class, 'submitAction']);
+
+Route::get('/contact-list', [ContactController::class, 'indexAction']);

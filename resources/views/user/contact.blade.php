@@ -29,14 +29,45 @@
                 display: flex;
                 justify-content: center;
             }
+
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-        First Name: {{ $first_name }} <br />
-        Last Name: {{ $last_name }} <br />
-        Country: {{ $country }} <br />
-        Subject: {{ $subject }} <br />
+            <table style="width:100%">
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>email</th>
+                    <th>country</th>
+                    <th>created at</th>
+                </tr>
+
+                @foreach ($contacts as $contact)
+                    <tr>
+                        <td>{{ $contact->fist_name }}</td>
+                        <td>{{ $contact->last_name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ $contact->country }}</td>
+                        <td>{{ $contact->created_at->format('d-m-Y') }}</td>
+                    </tr>
+                @endforeach
+            </table>
         </div>
     </body>
 </html>

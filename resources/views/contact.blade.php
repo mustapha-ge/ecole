@@ -72,10 +72,13 @@ input[type=submit]:hover {
                 @csrf
 
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                <input type="text" id="fname" name="fist_name" placeholder="Your name..">
 
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                <input type="text" id="lname" name="last_name" placeholder="Your last name..">
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Your email..">
 
                 <label for="country">Country</label>
                 <select id="country" name="country">

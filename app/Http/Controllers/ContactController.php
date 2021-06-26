@@ -4,23 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
 
+    public function indexAction (Request $request) 
+    {
+        // get contact list
+        $contactList = new Contact(); 
+        $contactList = $contactList->all(); 
+
+        // return view
+        return view('user.contact', array(
+            'contacts' => $contactList,
+        ));
+    }
+
     public function submitAction (Request $request) 
     {
-        $fname = $request->input('firstname');
-        $lname = $request->input('lastname');
-        $country = $request->input('country');
-        $subject = $request->input('subject');
-        
-        return view('user.contact', [
-            'first_name' => $fname,
-            'last_name' => $lname,
-            'country' => $country,
-            'subject' => $subject,
-        ]);
+        // insert contact 
+        $contact = new Contact(); 
+        $contact->fill($request->all());
+        $contact->save();
+
+        return redirect('/contact-list');
     }
 
 }
